@@ -1,4 +1,4 @@
-name: Kernel Build (alioth) - clang-r547379 noksu
+name: Kernel Build TEST (alioth) - clang-r547379 noksu
 
 on:
   pull_request:
@@ -49,6 +49,17 @@ jobs:
         echo "AnyKernel Url: ${{ github.event.inputs.ANYKERNEL_URL }}/tree/${{ github.event.inputs.ANYKERNEL_BRANCH }}"
         echo "Second AnyKernel Url: ${{ github.event.inputs.SECOND_ANYKERNEL_URL }}/tree/${{ github.event.inputs.SECOND_ANYKERNEL_BRANCH }}"
         echo "::endgroup::"
+  
+    - name: Install prerequisites
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y curl wget git build-essential zip ccache bc bison flex
+        sudo apt-get install -y libssl-dev libncurses5-dev libncursesw5-dev zlib1g-dev p7zip-full
+        sudo apt-get install -y python3 python3-pip python3-venv ca-certificates
+        sudo apt-get install -y clang lld gcc-aarch64-linux-gnu gcc-arm-linux-gnueabi g++-arm-linux-gnueabi
+        sudo apt-get install -y g++-aarch64-linux-gnu file jq perl tar sudo unzip
+        sudo apt-get install -y pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl 
+        sudo apt-get install -y zip unzip tar gzip bzip2 rar unrar llvm g++-multilib bison gperf zlib1g-dev automake
 
     - name: Initialize workspace
       run: |
