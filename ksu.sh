@@ -1,4 +1,4 @@
 rm -rf KernelSU-Next
 curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -s next
 cp -rf "0001-Implement-SUSFS-v1.5.3-universal.patch" KernelSU-Next && cd ./KernelSU-Next && patch -p1 -f < "0001-Implement-SUSFS-v1.5.3-universal.patch" && cd ..
-patch -p1 -f <"50_add_susfs_in_kernel-4.19.patch"
+patch --verbose --dry-run --ignore-whitespace --fuzz -p1 <"50_add_susfs_in_kernel-4.19.patch"
